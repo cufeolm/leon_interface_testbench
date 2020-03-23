@@ -2,10 +2,17 @@ onerror {resume}
 quietly WaveActivateNextPane {} 0
 add wave -noupdate /top/dut/clk
 add wave -noupdate /top/dut/rst
-add wave -noupdate /top/dut/iu0/ico.data
-add wave -noupdate /top/dut/iu0/dco.data
-add wave -noupdate /top/dut/iu0/fe.pc
-add wave -noupdate /top/dut/iu0/*
+add wave -noupdate /top/dut/iu0/rst
+add wave -noupdate /top/bfm/icache_input.fpc
+add wave -noupdate /top/bfm/send_inst/inst
+add wave -noupdate /top/bfm/send_data/data
+add wave -r /*
+#add wave -noupdate /top/dut/clk
+#add wave -noupdate /top/dut/rst
+#add wave -noupdate /top/dut/iu0/ico.data
+#add wave -noupdate /top/dut/iu0/dco.data
+#add wave -noupdate /top/dut/iu0/fe.pc
+#add wave -noupdate /top/dut/iu0/*
 #add wave -noupdate /top/clk
 
 TreeUpdate [SetDefaultTree]
