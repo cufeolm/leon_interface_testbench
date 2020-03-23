@@ -1,5 +1,4 @@
 //  Module: top
-//
 module top ;
     /*  package imports  */
     import iface::*;

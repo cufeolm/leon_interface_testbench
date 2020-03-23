@@ -51,10 +51,10 @@ interface GUVM_interface(input logic clk);
         #10;
     end
     */
-    function void send_data(logic [31:0] data );
+    function void send_data(logic [31:0] data);
         dcache_output.data = data ;
     endfunction
-    function void send_inst(logic [31:0] inst  );
+    function void send_inst(logic [31:0] inst);
         icache_output.data = inst ; 
     endfunction
     function logic [31:0] recive_data();
@@ -92,7 +92,7 @@ interface GUVM_interface(input logic clk);
         dcache_output_diag.tag = 1'b0;
         dcache_output_diag.flush = 1'b0;
 
-        dcache_output.icdiag=dcache_output_diag;
+        dcache_output.icdiag = dcache_output_diag;
     endfunction
 
     task reset_dut();
