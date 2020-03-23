@@ -12,53 +12,58 @@ module top ;
         .iui(bfm.integer_unit_input),
         .iuo(bfm.integer_unit_output),
         .ico(bfm.icache_output),
+        .ici(bfm.icache_input),
         .dci(bfm.dcache_input),
         .dco(bfm.dcache_output)
     );
-  /*  initial begin 
-        forever begin
-            bfm.send_data(32'hC0000000);
-        end
-
-        forever begin
-            @(negedge clk)
-            $display("iam checking on data:%h",bfm.recive_data());
-        end
-    end
-*/
-    initial begin 
+    
+    initial begin
+        bfm.send_data(32'h100);
+        bfm.send_inst(32'h01000000);
         bfm.set_Up();
         bfm.reset_dut();
         bfm.set_Up();
-        bfm.send_data(32'h000000012);
-        //bfm.send_inst(32'hC0017E81); 
-        //bfm.send_inst(32'hC0000000);
-        bfm.send_inst(32'hC6002000);
+
+    end
+    initial begin 
         
-        repeat (100)begin
-            @(posedge clk)
-            //bfm.send_data(32'h000000012);
-            //bfm.send_inst(32'hC0017E81);
-         //bfm.send_inst(32'hC0000000);//load to register 0 
-         $display("is this data ? :%b",bfm.recive_data());
+        clk = 0 ;
+        repeat (14*2)#10 clk=~clk;
+        repeat (14*2)#10 clk=~clk;
+        for (integer i =0; i <32;i++) begin
+            bfm.load(i,$random());
+            repeat(2*1)#10 clk=~clk;
+            bfm.nop();
+            repeat(2*4)#10 clk=~clk;
         end
-        //$display("now for the load instruction");
-        //bfm.send_inst(32'hC0200000);
-        bfm.send_inst(32'hC6204002);
-        //32'hC6204002
-        repeat (100) @(posedge clk) ;
-        //repeat (100)begin
-       // @(posedge clk)
-         
-         //$display("is this data ? :%b",bfm.recive_data());
-         //bfm.send_data(32'hc);
-       // end
-        repeat (100) @(posedge clk);
-        //$finish();
+        bfm.load(12,12);
+        repeat(2*1)#10 clk=~clk;
+        bfm.nop();
+        repeat(2*400)#10 clk=~clk;
+        //bfm.add(2,3,4);//add reg2 + reg3 and put inside reg4
+        bfm.add(1,2,3);
+        repeat(2*1)#10 clk=~clk;
+        //bfm.nop();
+
+        repeat(2*400)#10 clk=~clk;
+        bfm.store(4);
+        $display("fetch:%d",bfm.recive_data());
+        repeat(2*1)#10 clk=~clk;
+        bfm.nop();
+        $display("dec:%d",bfm.recive_data());
+        repeat(2*1)#10 clk=~clk;
+        $display("exc:%d",bfm.recive_data());
+        repeat(2*1)#10 clk=~clk;
+        $display("mem:%d",bfm.recive_data());
+        repeat(2*1)#10 clk=~clk;
+        $display("wb:%d",bfm.recive_data());
+
+        repeat(2*400)#10 clk=~clk;
+
         $stop();
     end
 
-    
+    /*
     initial begin
         clk = 0 ; 
         forever begin 
@@ -66,5 +71,6 @@ module top ;
            // $display(clk);
         end
     end
-
+    
+*/
 endmodule: top
