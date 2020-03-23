@@ -21,7 +21,7 @@ interface GUVM_interface(input logic clk);
     logic [31:0] inst;
     logic [31:0] out;
     always @ (posedge clk)
-      force dut.iu0.de.cwp=1;  // cntrl_enb ? cntrl_data : 'Z;
+      force dut.iu0.de.cwp=7;  // cntrl_enb ? cntrl_data : 'Z;
     /*
     clocking driver_cb @ (negedge clk);
         output inst;
@@ -67,6 +67,10 @@ interface GUVM_interface(input logic clk);
         return dcache_input.edata;
         //return dcache_input.edata;
     endfunction 
+    function logic [31:0] store(logic [4:0] ra );
+        send_inst({2'b11,ra,6'b000100,3'b0,16'h2000});
+        //send_data(rd);
+    endfunction
 
     function void load(logic [4:0] ra , logic [31:0] rd );
         send_inst({2'b11,ra,1'b0,8'h0,16'h2000});
@@ -76,7 +80,10 @@ interface GUVM_interface(input logic clk);
     function void nop ();
         icache_output.data = 32'h01000000;
     endfunction
+    function void add(logic [4:0] r1,logic [4:0] r2,logic [4:0] rd);
 
+        send_inst({2'b10,rd,6'b0,r1,1'b0,8'b0,r2});
+    endfunction
 
     function void set_Up();
                 ////////////// da mkan elsetup function //////////////////

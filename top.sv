@@ -32,11 +32,33 @@ module top ;
         repeat (14*2)#10 clk=~clk;
         repeat (14*2)#10 clk=~clk;
         for (integer i =0; i <32;i++) begin
-            bfm.load(i,i*i);
+            bfm.load(i,$random());
             repeat(2*1)#10 clk=~clk;
-            //bfm.nop();
+            bfm.nop();
             repeat(2*4)#10 clk=~clk;
         end
+        bfm.load(12,12);
+        repeat(2*1)#10 clk=~clk;
+        bfm.nop();
+        repeat(2*400)#10 clk=~clk;
+        //bfm.add(2,3,4);//add reg2 + reg3 and put inside reg4
+        bfm.add(1,2,3);
+        repeat(2*1)#10 clk=~clk;
+        //bfm.nop();
+
+        repeat(2*400)#10 clk=~clk;
+        bfm.store(4);
+        $display("fetch:%d",bfm.recive_data());
+        repeat(2*1)#10 clk=~clk;
+        bfm.nop();
+        $display("dec:%d",bfm.recive_data());
+        repeat(2*1)#10 clk=~clk;
+        $display("exc:%d",bfm.recive_data());
+        repeat(2*1)#10 clk=~clk;
+        $display("mem:%d",bfm.recive_data());
+        repeat(2*1)#10 clk=~clk;
+        $display("wb:%d",bfm.recive_data());
+
         repeat(2*400)#10 clk=~clk;
 
         $stop();
