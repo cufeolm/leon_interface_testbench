@@ -81,7 +81,9 @@ interface GUVM_interface(input logic clk);
         icache_output.data = 32'h01000000;
     endfunction
     function void add(logic [4:0] r1,logic [4:0] r2,logic [4:0] rd);
-
+        //dcache_output.hold = 1'b0;
+        //icache_output.hold = 1'b0;
+        //dcache_output.mds = 1'b1;
         send_inst({2'b10,rd,6'b0,r1,1'b0,8'b0,r2});
     endfunction
 
@@ -106,11 +108,11 @@ interface GUVM_interface(input logic clk);
         //dcache_output.data = 32'h13; // Data bus address
         dcache_output.mexc = 1'b0; // memory exception
         dcache_output.hold = 1'b1;
-        dcache_output.mds = 1'b0;
+        dcache_output.mds = 1'b1;
         dcache_output.werr = 1'b0; // memory write error
 
         dcache_output_diag.addr = 15 ;
-        dcache_output_diag.enable = 32'h0;
+        //dcache_output_diag.enable = 32'h0;
         dcache_output_diag.enable = 1'b0;
         dcache_output_diag.read = 1'b0;
         dcache_output_diag.tag = 1'b0;

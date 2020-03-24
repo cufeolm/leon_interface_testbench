@@ -29,17 +29,18 @@ module top ;
     initial begin 
         
         clk = 0 ;
-        repeat (14*2)#10 clk=~clk;
+       /* repeat (14*2)#10 clk=~clk;
         repeat (14*2)#10 clk=~clk;
         for (integer i =0; i <32;i++) begin
-            bfm.load(i,$random());
+            bfm.load(i,i*i);
             repeat(2*1)#10 clk=~clk;
             bfm.nop();
             repeat(2*4)#10 clk=~clk;
         end
-        bfm.load(12,12);
+       // bfm.load(3,12);
         repeat(2*1)#10 clk=~clk;
         bfm.nop();
+       // bfm.dcache_output.mds = 1'b1;
         repeat(2*400)#10 clk=~clk;
         //bfm.add(2,3,4);//add reg2 + reg3 and put inside reg4
         bfm.add(1,2,3);
@@ -47,7 +48,7 @@ module top ;
         //bfm.nop();
 
         repeat(2*400)#10 clk=~clk;
-        bfm.store(4);
+        bfm.store(3);
         $display("fetch:%d",bfm.recive_data());
         repeat(2*1)#10 clk=~clk;
         bfm.nop();
@@ -58,8 +59,44 @@ module top ;
         $display("mem:%d",bfm.recive_data());
         repeat(2*1)#10 clk=~clk;
         $display("wb:%d",bfm.recive_data());
+        repeat(2*1)#10 clk=~clk;
+        $display("wb:%d",bfm.recive_data());
 
         repeat(2*400)#10 clk=~clk;
+        */
+        repeat (14*2)#10 clk=~clk;
+        repeat (14*2)#10 clk=~clk;
+
+        bfm.load(1,5);
+        repeat(2*1)#10 clk=~clk;
+        bfm.nop();
+        repeat(2*4)#10 clk=~clk;
+
+        bfm.load(2,3);
+        repeat(2*1)#10 clk=~clk;
+        bfm.nop();
+        repeat(2*4)#10 clk=~clk;
+
+        bfm.add(1,2,3);
+        repeat(2*5)#10 clk=~clk;
+        repeat(2*5)#10 clk=~clk;
+
+
+
+        bfm.store(3);
+        $display("fetch:%d",bfm.recive_data());
+        repeat(2*1)#10 clk=~clk;
+        bfm.nop();
+        $display("dec:%d",bfm.recive_data());
+        repeat(2*1)#10 clk=~clk;
+        $display("exc:%d",bfm.recive_data());
+        repeat(2*1)#10 clk=~clk;
+        $display("mem:%d",bfm.recive_data());
+        repeat(2*1)#10 clk=~clk;
+        $display("wb:%d",bfm.recive_data());
+        repeat(2*1)#10 clk=~clk;
+        
+
 
         $stop();
     end
