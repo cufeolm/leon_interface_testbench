@@ -1,3 +1,36 @@
+# do run_tb.do
+# QuestaSim-64 vlog 10.4e Compiler 2016.04 Apr  9 2016
+# Start time: 19:37:41 on Mar 24,2020
+# vlog GUVM_bfm_leon.sv 
+# -- Compiling interface GUVM_interface
+# -- Importing package iface__mti__sv__equiv__implct__pack
+# 
+# Top level modules:
+# 	--none--
+# End time: 19:37:42 on Mar 24,2020, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 10.4e Compiler 2016.04 Apr  9 2016
+# Start time: 19:37:42 on Mar 24,2020
+# vlog top.sv 
+# -- Compiling module top
+# -- Importing package iface__mti__sv__equiv__implct__pack
+# 
+# Top level modules:
+# 	top
+# End time: 19:37:42 on Mar 24,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim top 
+# Start time: 19:37:42 on Mar 24,2020
+# ** Note: (vsim-3812) Design is being optimized...
+# 
+# ** Warning: leon/iu.vhd(2425): (vopt-8617) Possible component instance "/top/dut/iu0/mul0/u0 : mul" is not bound.
+# 
+# ** Warning: leon/iu.vhd(2431): (vopt-8617) Possible component instance "/top/dut/iu0/div0/u0 : div" is not bound.
+# 
+# ** Warning: top.sv(86): (vopt-2240) Treating stand-alone use of function 'store' as an implicit VOID cast.
+# 
+# ** Warning: GUVM_bfm_leon.sv(70): (vopt-2250) Function "store" has no return value assignment.
+# 
 # //  Questa Sim-64
 # //  Version 10.4e win64 Apr  9 2016
 # //
@@ -13,5 +46,137 @@
 # //  FURTHERMORE, THIS INFORMATION IS PROHIBITED FROM DISCLOSURE UNDER
 # //  THE TRADE SECRETS ACT, 18 U.S.C. SECTION 1905.
 # //
-# vsim.wlf opened as dataset "vsim"
-# do wave.do
+# Loading sv_std.std
+# Loading work.iface__mti__sv__equiv__implct__pack(fast)
+# Loading work.top(fast)
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.target
+# Loading ieee.std_logic_arith(body)
+# Loading work.device
+# Loading work.config
+# Loading work.sparcv8
+# Loading work.iface
+# Loading work.amba
+# Loading work.fpulib
+# Loading work.tech_map
+# Loading work.proc(rtl)#1
+# Loading ieee.std_logic_unsigned(body)
+# Loading work.macro(body)
+# Loading work.iu(rtl)#1
+# Loading work.tech_atc25
+# Loading work.tech_atc35
+# Loading work.tech_fs90
+# Loading work.tech_umc18
+# Loading work.tech_generic
+# Loading work.tech_virtex
+# Loading work.regfile_iu(rtl)#1
+# Loading work.generic_regfile_iu(rtl)#1
+# Loading work.generic_dpram_ss(behav)#1
+# ** Warning: (vsim-8822) top.sv(9): [TFMPC] - Missing Verilog connection for formal VHDL port 'pcirst'.
+#    Time: 0 ns  Iteration: 0  Instance: /top/dut File: leon/proc.vhd
+# ** Warning: (vsim-8684) No drivers exist on out port /top/dut/iu0/fpui.FpOp, and its initial value is not used.
+# 
+# Therefore, simulation behavior may occur that is not in compliance with
+# 
+# the VHDL standard as the initial values come from the base signal /top/dut/fpui.FpOp.
+# ** Warning: (vsim-8684) No drivers exist on out port /top/dut/iu0/fpui.FpLd, and its initial value is not used.
+# 
+# Therefore, simulation behavior may occur that is not in compliance with
+# 
+# the VHDL standard as the initial values come from the base signal /top/dut/fpui.FpLd.
+# ** Warning: (vsim-8684) No drivers exist on out port /top/dut/iu0/fpui.Reset, and its initial value is not used.
+# 
+# Therefore, simulation behavior may occur that is not in compliance with
+# 
+# the VHDL standard as the initial values come from the base signal /top/dut/fpui.Reset.
+# ** Warning: (vsim-8684) No drivers exist on out port /top/dut/iu0/fpui.ss_scan_mode, and its initial value is not used.
+# 
+# Therefore, simulation behavior may occur that is not in compliance with
+# 
+# the VHDL standard as the initial values come from the base signal /top/dut/fpui.ss_scan_mode.
+# ** Warning: (vsim-8684) No drivers exist on out port /top/dut/iu0/fpui.fp_ctl_scan_in, and its initial value is not used.
+# 
+# Therefore, simulation behavior may occur that is not in compliance with
+# 
+# the VHDL standard as the initial values come from the base signal /top/dut/fpui.fp_ctl_scan_in.
+# ** Warning: (vsim-8684) No drivers exist on out port /top/dut/iu0/iuo.debug.de.annul, and its initial value is not used.
+# 
+# Therefore, simulation behavior may occur that is not in compliance with
+# 
+# the VHDL standard as the initial values come from the base signal /top/dut/iuol.debug.de.annul.
+# ** Warning: (vsim-8684) No drivers exist on out port /top/dut/iu0/iuo.debug.de.ld, and its initial value is not used.
+# 
+# Therefore, simulation behavior may occur that is not in compliance with
+# 
+# the VHDL standard as the initial values come from the base signal /top/dut/iuol.debug.de.ld.
+# ** Warning: (vsim-8684) No drivers exist on out port /top/dut/iu0/iuo.debug.de.pv, and its initial value is not used.
+# 
+# Therefore, simulation behavior may occur that is not in compliance with
+# 
+# the VHDL standard as the initial values come from the base signal /top/dut/iuol.debug.de.pv.
+# ** Warning: (vsim-8684) No drivers exist on out port /top/dut/iu0/iuo.debug.de.rett, and its initial value is not used.
+# 
+# Therefore, simulation behavior may occur that is not in compliance with
+# 
+# the VHDL standard as the initial values come from the base signal /top/dut/iuol.debug.de.rett.
+# ** Warning: (vsim-8684) No drivers exist on out port /top/dut/iu0/iuo.debug.de.trap, and its initial value is not used.
+# 
+# Therefore, simulation behavior may occur that is not in compliance with
+# 
+# the VHDL standard as the initial values come from the base signal /top/dut/iuol.debug.de.trap.
+# ** Warning: (vsim-8684) No drivers exist on out port /top/dut/iu0/iuo.debug.de.inst(31 downto 0), and its initial value is not used.
+# 
+# Therefore, simulation behavior may occur that is not in compliance with
+# 
+# the VHDL standard as the initial values come from the base signal /top/dut/iuol.debug.de.inst(31 downto 0).
+# ** Warning: (vsim-8684) No drivers exist on out port /top/dut/iu0/iuo.debug.de.pc(31 downto 2), and its initial value is not used.
+# 
+# Therefore, simulation behavior may occur that is not in compliance with
+# 
+# the VHDL standard as the initial values come from the base signal /top/dut/iuol.debug.de.pc(31 downto 2).
+# ** Warning: (vsim-8684) No drivers exist on out port /top/dut/iu0/iuo.debug.de.cnt(1 downto 0), and its initial value is not used.
+# 
+# Therefore, simulation behavior may occur that is not in compliance with
+# 
+# the VHDL standard as the initial values come from the base signal /top/dut/iuol.debug.de.cnt(1 downto 0).
+# ** Warning: (vsim-8684) No drivers exist on out port /top/dut/iu0/iuo.debug.de.tt(5 downto 0), and its initial value is not used.
+# 
+# Therefore, simulation behavior may occur that is not in compliance with
+# 
+# the VHDL standard as the initial values come from the base signal /top/dut/iuol.debug.de.tt(5 downto 0).
+# ** Warning: (vsim-8684) No drivers exist on out port /top/dut/iu0/iuo.debug.de.rd(7 downto 0), and its initial value is not used.
+# 
+# Therefore, simulation behavior may occur that is not in compliance with
+# 
+# the VHDL standard as the initial values come from the base signal /top/dut/iuol.debug.de.rd(7 downto 0).
+# 1
+# fetch:         5
+# dec:         5
+# exc:         0
+# mem:         0
+# wb:         0
+# ** Note: $stop    : top.sv(101)
+#    Time: 1060 ns  Iteration: 0  Instance: /top
+# Break at top.sv line 101
+# Stopped at top.sv line 101
+#   0: XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX
+#   8: XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX
+#  16: XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX
+#  24: XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX
+#  32: XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX
+#  40: XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX
+#  48: XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX
+#  56: XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX
+#  64: XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX
+#  72: XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX
+#  80: XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX
+#  88: XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX
+#  96: XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX
+# 104: XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX
+# 112: XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX
+# 120: XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX
+# 128: XXXXXXXX 00000005 00000003 00000008 XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX
+# End time: 19:37:46 on Mar 24,2020, Elapsed time: 0:00:04
+# Errors: 0, Warnings: 20
