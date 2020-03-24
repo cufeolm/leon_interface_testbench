@@ -20,63 +20,29 @@ interface GUVM_interface(input logic clk);
 
     logic [31:0] inst;
     logic [31:0] out;
-    always @ (posedge clk)
-      force dut.iu0.de.cwp=7;  // cntrl_enb ? cntrl_data : 'Z;
-    /*
-    clocking driver_cb @ (negedge clk);
-        output inst;
-    endclocking : driver_cb
 
-    always @ (negedge clk) begin
-        icache_output.data = inst;
-        out = icache_output.data;
-    end
-
-    clocking monitor_cb @ (negedge clk);
-        input out;
-        // lessa b2eet el7agat 
-    endclocking : monitor_cb
-
-    modport driver_if_mp (clocking driver_cb);
-    modport monitor_if_mp (clocking monitor_cb);
-    */ 
+    always @(posedge clk)
+        force dut.iu0.de.cwp = 7;  // cntrl_enb ? cntrl_data : 'Z;
     
-    ////////////// elclock generation hatkoon fe eltop ///////////////////
-    // always #5 clk = ~clk;
-    // initial begin
-    //     clk = 0;
-    // end
-
-    /*
-    initial begin
-        clk = 0;
-        #10;
-        clk = 1;
-        #10;
-    end
-    */
     function void send_data(logic [31:0] data);
-        dcache_output.data = data ;
-    endfunction
-<<<<<<< HEAD
-    function void send_inst(logic [31:0] inst);
-=======
+        dcache_output.data = data;
+    endfunction : send_data
 
     function void send_inst(logic [31:0] inst);
->>>>>>> 4393c60046aa98ea25e204584bd57924319291a7
-        icache_output.data = inst ; 
+        icache_output.data = inst; 
     endfunction
 
     function logic [31:0] recive_data();
         return dcache_input.edata;
         //return dcache_input.edata;
-    endfunction 
-    function logic [31:0] store(logic [4:0] ra );
+    endfunction
+
+    function logic [31:0] store(logic [4:0] ra);
         send_inst({2'b11,ra,6'b000100,3'b0,16'h2000});
         //send_data(rd);
     endfunction
 
-    function void load(logic [4:0] ra , logic [31:0] rd );
+    function void load(logic [4:0] ra , logic [31:0] rd);
         send_inst({2'b11,ra,1'b0,8'h0,16'h2000});
         send_data(rd);
     endfunction
@@ -84,13 +50,12 @@ interface GUVM_interface(input logic clk);
     function void nop ();
         icache_output.data = 32'h01000000;
     endfunction
-    function void add(logic [4:0] r1,logic [4:0] r2,logic [4:0] rd);
 
+    function void add(logic [4:0] r1,logic [4:0] r2,logic [4:0] rd);
         send_inst({2'b10,rd,6'b0,r1,1'b0,8'b0,r2});
     endfunction
 
     function void set_Up();
-                ////////////// da mkan elsetup function //////////////////
         pciclk = 1'b0;
         pcirst = 1'b0;
 

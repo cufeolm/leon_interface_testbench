@@ -30,12 +30,14 @@ module top ;
         clk = 0 ;
         repeat (14*2)#10 clk=~clk;
         repeat (14*2)#10 clk=~clk;
+
         for (integer i =0; i <32;i++) begin
             bfm.load(i,$random());
             repeat(2*1)#10 clk=~clk;
             bfm.nop();
             repeat(2*4)#10 clk=~clk;
         end
+        
         bfm.load(12,12);
         repeat(2*1)#10 clk=~clk;
         bfm.nop();
